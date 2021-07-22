@@ -1,9 +1,7 @@
-.btns {
-    margin-left: 290px;
-    /* padding-top: 10%; */
+.item-add-form {
+    margin-top: 10px;
 }
 
-
-.btns button {
-    margin-top: 7px;
+.item-add-form input {
+    margin-right: 3px;
 }

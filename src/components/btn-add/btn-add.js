@@ -3,17 +3,41 @@ import './btn-add.css';
 
 export default class ButtonAdd extends Component {
 
-    render() {
-        return (
-            <span className="btns">
-                <button 
-                className="btn btn-outline-secondary" 
-                type="button"
-                onClick={() => this.props.onItemAdded("Hello World")}>Add button </button>
-            </span>
-
-            
-        );
+    state = {
+        label: ''
     };
 
+    onLabelChange = (e) => {
+        this.setState({
+            label: e.target.value
+        });
+        
+    };
+
+    onSubmit = (e) => {
+        e.preventDefault();
+        this.props.onItemAdded(this.state.label);
+        this.setState({
+            label: ''
+        });
+    };
+
+    render() {
+        return (
+            <form className="item-add-form d-flex"
+                  onSubmit={this.onSubmit}>
+
+                <input 
+                    type="text"
+                    className="form-control" 
+                    onChange={this.onLabelChange}
+                    placeholder="What needs to be done"
+                    value={this.state.label}/>
+                <button 
+               className="btn btn-outline-secondary">
+                    Add Item
+                </button>
+            </form>
+        );
+    };
 };
